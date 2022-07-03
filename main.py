@@ -7,7 +7,8 @@ from pydantic import BaseModel
 from pydantic import Field, EmailStr
 
 # FastAPI
-from fastapi import FastAPI, status
+from fastapi import fastapi
+from fastapi import status
 
 app = FastAPI()
 
@@ -52,14 +53,12 @@ class Twitt():
 
 #Path Operations
 
-@app.get(path="/")
-def home():
-    return {"Twitter API": "Working"}
+
 
 ## Users
 @app.post(
     path="/signup",
-    responsive_model=User,
+    response_model=User,
     status_code=status.HTTP_201_CREATED,
     summary="Register an User",
     tags=["Users"]
@@ -120,3 +119,74 @@ def update_a_user():
 
 
 ## Tweets
+
+### Show all tweets
+
+
+@app.get(
+    path="/",
+    response_model=List[Twitt],
+    status_code=status.HTTP_200_0K,
+    summary="All Tweets",
+    tags=["Tweets"]
+    )
+def home():
+    return {"Twitter API": "Working"}
+
+
+### Post a tweet
+
+
+@app.post(
+    path="/post",
+    response_model=Twitt,
+    status_code=status.HTTP_201_CREATED,
+    summary="Post a Tweet",
+    Tags="Tweets"
+)
+def post():
+    pass
+
+
+### Show a Tweet
+
+
+@app.get(
+    path="/tweets/{tweet_id}",
+    response_model=Twitt,
+    status_code=status.HTTP_200_0K,
+    summary="Show a Tweet",
+    tags=["Tweets"]
+)
+def show_a_tweet():
+    pass
+
+
+### Delete a tweet
+
+
+@app.delete(
+    path="/tweets/{tweet_id}/delete",
+    response_model=Twitt,
+    status_code=status.HTTP_200_0K,
+    summary="Delete a Tweet",
+    tags=["Tweets"]
+)
+def delete_a_tweet():
+    pass
+
+
+### Update a tweet
+
+
+@app.put(
+    path="/tweets/{tweet_id}/update",
+    response_model=Twitt,
+    status_code=status.HTTP_200_0K,
+    summary="Update a Tweet",
+    tags=["Tweets"]
+)
+def update_a_tweet():
+    pass
+
+
