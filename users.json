@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "email": "saulyaguanacruz@gmail.com",
+        "first_name": "Saul",
+        "last_name": "Yaguana",
+        "birth_date": "2003-11-12",
+        "password": "athiefs end"
+    }
+]
